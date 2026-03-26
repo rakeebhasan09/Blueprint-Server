@@ -8,6 +8,8 @@ const propertySchema = new Schema<TProperties>(
 		price: { type: Number, required: true },
 		location: { type: String, required: true },
 		city: { type: String, required: true },
+		featured: { type: Boolean, required: true },
+		popular: { type: Boolean, required: true },
 		bedrooms: { type: Number, required: true },
 		bathrooms: { type: Number, required: true },
 		sqft: { type: Number, required: true },

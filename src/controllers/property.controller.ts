@@ -22,11 +22,11 @@ const createProperty = async (req: Request, res: Response) => {
 // Get All Propertiec
 const getProperties = async (req: Request, res: Response) => {
 	try {
-		const properties = await Property.find();
+		const properties = await Property.find().sort({ createdAt: -1 });
 		res.status(200).json({
 			success: true,
 			message: "Successfully get all properties.",
-			data: properties,
+			properties: properties,
 		});
 	} catch (err: any) {
 		res.status(500).json({

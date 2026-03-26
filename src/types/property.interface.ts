@@ -4,6 +4,8 @@ export interface TProperties {
 	price: number;
 	location: string;
 	city: string;
+	featured: boolean;
+	popular: boolean;
 	bedrooms: number;
 	bathrooms: number;
 	sqft: number;
