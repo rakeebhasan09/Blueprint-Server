@@ -37,4 +37,31 @@ const getProperties = async (req: Request, res: Response) => {
 	}
 };
 
-export const propertyControllers = { createProperty, getProperties };
+// Delete Single Property
+const deleteProperty = async (req: Request, res: Response) => {
+	try {
+		const deletedProperty = await Property.findByIdAndDelete(req.params.id);
+		if (!deletedProperty) {
+			return res.status(404).json({
+				success: false,
+				message: "Property not found",
+			});
+		}
+		res.status(200).json({
+			success: true,
+			message: "Property deleted successfully.",
+		});
+	} catch (err: any) {
+		res.status(500).json({
+			success: false,
+			message: "Something went wrong.",
+			error: err.message,
+		});
+	}
+};
+
+export const propertyControllers = {
+	createProperty,
+	getProperties,
+	deleteProperty,
+};
