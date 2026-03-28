@@ -5,6 +5,7 @@ import { Property } from "../models/propeties.model";
 const createProperty = async (req: Request, res: Response) => {
 	try {
 		const savedProperty = await Property.create(req.body);
+		console.log(savedProperty);
 		res.status(201).json({
 			success: true,
 			message: "Property created successfully!!",
