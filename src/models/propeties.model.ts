@@ -22,7 +22,6 @@ const propertySchema = new Schema<TProperties>(
 		features: { type: [String], required: true },
 		yearBuilt: { type: Number, required: true },
 		agent: { type: String, required: true },
-		date: { type: String, required: true },
 	},
 	{
 		timestamps: true,
