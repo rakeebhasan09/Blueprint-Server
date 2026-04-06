@@ -6,7 +6,6 @@ import mongoose from "mongoose";
 const createProperty = async (req: Request, res: Response) => {
 	try {
 		const savedProperty = await Property.create(req.body);
-		console.log(savedProperty);
 		res.status(201).json({
 			success: true,
 			message: "Property created successfully!!",
@@ -26,11 +25,11 @@ const getProperties = async (req: Request, res: Response) => {
 	try {
 		const { type, excludeId } = req.query;
 		const query: any = {};
-		if (type) {
+		if (type && typeof type === "string") {
 			query.type = type; // ✅ correct assignment
 		}
 
-		if (excludeId) {
+		if (excludeId && typeof excludeId === "string") {
 			query._id = {
 				$ne: new mongoose.Types.ObjectId(excludeId),
 			};
