@@ -1,6 +1,7 @@
 import express from "express";
 import { PropertyRoutes } from "./property.routes";
 import { FeaturedRoute } from "./featured.route";
+import { PopularProperty } from "./popular.route";
 
 const router = express.Router();
 
@@ -12,6 +13,10 @@ const moduleRoutes = [
 	{
 		path: "/featured",
 		route: FeaturedRoute,
+	},
+	{
+		path: "/popular",
+		route: PopularProperty,
 	},
 ];
 

@@ -35,7 +35,6 @@ const getProperties = async (req: Request, res: Response) => {
 			};
 		}
 
-		console.log(type, excludeId);
 		const properties = await Property.find().sort({ createdAt: -1 });
 		const relatedProperties = await Property.find(query)
 			.sort({ createdAt: -1 })
@@ -46,12 +45,14 @@ const getProperties = async (req: Request, res: Response) => {
 			return res.status(200).json({
 				success: true,
 				message: "Successfully get all properties.",
+				total: relatedProperties.length,
 				relatedProperties: relatedProperties,
 			});
 		}
 		res.status(200).json({
 			success: true,
 			message: "Successfully get all properties.",
+			total: properties.length,
 			properties: properties,
 		});
 	} catch (err: any) {

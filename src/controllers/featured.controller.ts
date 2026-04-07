@@ -12,6 +12,7 @@ const getFeaturedProperties = async (req: Request, res: Response) => {
 		res.status(200).json({
 			success: true,
 			message: "Featured properties found.",
+			total: featuredProperties.length,
 			featured: featuredProperties,
 		});
 	} catch (err: any) {
