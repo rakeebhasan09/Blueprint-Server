@@ -2,22 +2,27 @@ import express from "express";
 import { PropertyRoutes } from "./property.routes";
 import { FeaturedRoute } from "./featured.route";
 import { PopularProperty } from "./popular.route";
+import { UserRoutes } from "./user.route";
 
 const router = express.Router();
 
 const moduleRoutes = [
-	{
-		path: "/properties",
-		route: PropertyRoutes,
-	},
-	{
-		path: "/featured",
-		route: FeaturedRoute,
-	},
-	{
-		path: "/popular",
-		route: PopularProperty,
-	},
+    {
+        path: "/properties",
+        route: PropertyRoutes,
+    },
+    {
+        path: "/featured",
+        route: FeaturedRoute,
+    },
+    {
+        path: "/popular",
+        route: PopularProperty,
+    },
+    {
+        path: "/register",
+        route: UserRoutes,
+    },
 ];
 
 moduleRoutes.forEach((route) => router.use(route.path, route.route));
