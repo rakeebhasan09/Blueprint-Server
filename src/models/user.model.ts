@@ -12,7 +12,7 @@ const userSchema = new Schema<TUser>(
             required: true,
             enum: ["user", "manager", "admin"],
         },
-        password: { type: String, required: true, select: false },
+        password: { type: String },
     },
     {
         timestamps: true,
