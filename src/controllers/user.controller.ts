@@ -40,16 +40,15 @@ const createUser = async (req: Request, res: Response) => {
         }
 
         // Handle credential-based user creation if needed
-        console.log("Creating user with credentials:", {
-            emailPasswordRegistrationData,
-        });
         if (emailPasswordRegistrationData) {
-            const { name, email, password } = emailPasswordRegistrationData;
+            const { fullname, email, role, password } =
+                emailPasswordRegistrationData;
+
             // If send data is incomplete, return error
-            if (!name || !email || !password) {
+            if (!fullname || !email || !password) {
                 return res.status(400).json({
                     success: false,
-                    message: "Name, email, and password are required",
+                    message: "Full name, email, and password are required",
                 });
             }
 
@@ -64,13 +63,26 @@ const createUser = async (req: Request, res: Response) => {
 
             // Create new user record
             const credentialBasedNewUser = {
-                name,
+                name: fullname,
                 email,
-                role: "user",
+                role,
                 password,
                 provider: "credentials",
                 registeredAt: new Date(),
             };
+
+            const result = await User.create(credentialBasedNewUser);
+            if (result) {
+                res.status(201).json({
+                    success: true,
+                    message: "Registration successful",
+                });
+            } else {
+                res.status(500).json({
+                    success: false,
+                    message: "Registration failed",
+                });
+            }
         }
     } catch (error) {
         console.error("Error creating user:", error);
