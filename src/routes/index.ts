@@ -20,7 +20,11 @@ const moduleRoutes = [
         route: PopularProperty,
     },
     {
-        path: "/register",
+        path: "/auth",
+        route: UserRoutes,
+    },
+    {
+        path: "/auth",
         route: UserRoutes,
     },
 ];

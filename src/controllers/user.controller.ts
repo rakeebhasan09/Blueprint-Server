@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { User } from "../models/user.model";
+import bcrypt from "bcrypt";
 
 // Create new user
 const createUser = async (req: Request, res: Response) => {
@@ -94,6 +95,52 @@ const createUser = async (req: Request, res: Response) => {
     }
 };
 
+const loginUser = async (req: Request, res: Response) => {
+    try {
+        const { email, password } = req.body;
+        if (!email || !password) {
+            return res.status(400).json({
+                success: false,
+                message: "Email and password are required",
+            });
+        }
+
+        const user = await User.findOne({ email }).select("+password");
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found",
+            });
+        }
+
+        // Password verification logic should be implemented here
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid password",
+            });
+        }
+        res.status(200).json({
+            success: true,
+            message: "Login successful",
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
+            },
+        });
+    } catch (error) {
+        console.error("Error logging in user:", error);
+        res.status(500).json({
+            success: false,
+            message: "Failed to log in user",
+        });
+    }
+};
+
 export const UserController = {
     createUser,
+    loginUser,
 };
