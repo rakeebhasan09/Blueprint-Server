@@ -27,6 +27,10 @@ const moduleRoutes = [
         path: "/auth",
         route: UserRoutes,
     },
+    {
+        path: "/users",
+        route: UserRoutes,
+    },
 ];
 
 moduleRoutes.forEach((route) => router.use(route.path, route.route));

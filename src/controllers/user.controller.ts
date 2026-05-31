@@ -140,7 +140,25 @@ const loginUser = async (req: Request, res: Response) => {
     }
 };
 
+const getAllUsers = async (req: Request, res: Response) => {
+    try {
+        const users = await User.find();
+        res.status(200).json({
+            success: true,
+            message: "Users retrieved successfully",
+            users,
+        });
+    } catch (error) {
+        console.error("Error retrieving users:", error);
+        res.status(500).json({
+            success: false,
+            message: "Failed to retrieve users",
+        });
+    }
+};
+
 export const UserController = {
     createUser,
     loginUser,
+    getAllUsers,
 };
