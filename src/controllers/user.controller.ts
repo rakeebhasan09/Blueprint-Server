@@ -21,7 +21,6 @@ const createUser = async (req: Request, res: Response) => {
                 email: user.email,
                 role: "user",
                 provider: account.provider,
-                registeredAt: new Date(),
             };
 
             // User record save to database
@@ -69,7 +68,6 @@ const createUser = async (req: Request, res: Response) => {
                 role,
                 password,
                 provider: "credentials",
-                registeredAt: new Date(),
             };
 
             const result = await User.create(credentialBasedNewUser);
@@ -142,7 +140,10 @@ const loginUser = async (req: Request, res: Response) => {
 
 const getAllUsers = async (req: Request, res: Response) => {
     try {
-        const users = await User.find();
+        const { email } = req.query;
+        const users = await User.find(email ? { email } : {}).sort({
+            createdAt: -1,
+        });
         res.status(200).json({
             success: true,
             message: "Users retrieved successfully",
@@ -157,8 +158,32 @@ const getAllUsers = async (req: Request, res: Response) => {
     }
 };
 
+const deleteUser = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findByIdAndDelete(id);
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found",
+            });
+        }
+        res.status(200).json({
+            success: true,
+            message: "User deleted successfully",
+        });
+    } catch (error) {
+        console.error("Error deleting user:", error);
+        res.status(500).json({
+            success: false,
+            message: "Failed to delete user",
+        });
+    }
+};
+
 export const UserController = {
     createUser,
     loginUser,
     getAllUsers,
+    deleteUser,
 };
