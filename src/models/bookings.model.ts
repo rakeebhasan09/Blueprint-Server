@@ -5,6 +5,7 @@ const bookingSchema = new Schema<TBookings>(
     {
         userId: { type: String, required: true },
         propertyId: { type: String, required: true },
+        propertyTitle: { type: String, required: true },
         customerEmail: { type: String, required: true },
         customerName: { type: String, required: true },
         customerPhone: { type: String, required: true },
