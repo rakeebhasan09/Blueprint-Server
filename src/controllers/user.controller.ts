@@ -93,6 +93,7 @@ const createUser = async (req: Request, res: Response) => {
     }
 };
 
+// User Login
 const loginUser = async (req: Request, res: Response) => {
     try {
         const { email, password } = req.body;
@@ -140,6 +141,7 @@ const loginUser = async (req: Request, res: Response) => {
     }
 };
 
+// Get all users
 const getAllUsers = async (req: Request, res: Response) => {
     try {
         const { email } = req.query;
@@ -160,6 +162,7 @@ const getAllUsers = async (req: Request, res: Response) => {
     }
 };
 
+// Update user role
 const updateUser = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
@@ -183,6 +186,7 @@ const updateUser = async (req: Request, res: Response) => {
     }
 };
 
+// Delete user
 const deleteUser = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;

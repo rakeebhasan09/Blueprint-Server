@@ -3,6 +3,7 @@ import { PropertyRoutes } from "./property.routes";
 import { FeaturedRoute } from "./featured.route";
 import { PopularProperty } from "./popular.route";
 import { UserRoutes } from "./user.route";
+import { BookingRoutes } from "./bookings.route";
 
 const router = express.Router();
 
@@ -34,6 +35,10 @@ const moduleRoutes = [
     {
         path: "/users/:id",
         route: UserRoutes,
+    },
+    {
+        path: "/bookings",
+        route: BookingRoutes,
     },
 ];
 
