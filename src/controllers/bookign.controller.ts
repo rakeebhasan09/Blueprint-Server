@@ -27,4 +27,22 @@ const createBooking = async (req: Request, res: Response) => {
     }
 };
 
-export const BookingController = { createBooking };
+// Get all bookings
+const getAllBookings = async (req: Request, res: Response) => {
+    try {
+        const bookings = await Booking.find().sort({ createdAt: -1 });
+        res.status(200).json({
+            success: true,
+            message: "Bookings retrieved successfully",
+            bookings,
+        });
+    } catch (error) {
+        console.error("Error fetching bookings:", error);
+        res.status(500).json({
+            success: false,
+            message: "Failed to fetch bookings",
+        });
+    }
+};
+
+export const BookingController = { createBooking, getAllBookings };

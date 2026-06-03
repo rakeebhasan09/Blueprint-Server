@@ -7,6 +7,7 @@ export interface TBookings {
     customerPhone: string;
     tourDate: string;
     tourTime: string;
+    bookingId: string;
     tourType: "In-Person Tour" | "Virtual Tour";
     status: "Pending" | "Confirmed" | "Cancelled";
 }

@@ -11,6 +11,7 @@ const bookingSchema = new Schema<TBookings>(
         customerPhone: { type: String, required: true },
         tourDate: { type: String, required: true },
         tourTime: { type: String, required: true },
+        bookingId: { type: String, required: true },
         tourType: { type: String, required: true },
         status: { type: String, required: true },
     },
