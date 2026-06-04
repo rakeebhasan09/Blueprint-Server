@@ -13,6 +13,10 @@ const userSchema = new Schema<TUser>(
             enum: ["user", "manager", "admin"],
         },
         password: { type: String },
+        bookingCount: {
+            type: Number,
+            default: 0,
+        },
     },
     {
         timestamps: true,
