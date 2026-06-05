@@ -51,6 +51,33 @@ const getAllBookings = async (req: Request, res: Response) => {
     }
 };
 
+// Update booking Status
+const updateBookingStatus = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const payload = req.body;
+        const booking = await Booking.findByIdAndUpdate(id, payload, {
+            new: true,
+        });
+        if (!booking) {
+            return res.status(404).json({
+                success: false,
+                message: "Booking not found",
+            });
+        }
+        res.status(200).json({
+            success: true,
+            message: "Status updated successfully",
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Something went wrong.",
+        });
+    }
+};
+
 // Delete a booking
 const deleteBooking = async (req: Request, res: Response) => {
     try {
@@ -78,5 +105,6 @@ const deleteBooking = async (req: Request, res: Response) => {
 export const BookingController = {
     createBooking,
     getAllBookings,
+    updateBookingStatus,
     deleteBooking,
 };
