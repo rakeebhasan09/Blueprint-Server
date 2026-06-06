@@ -1,4 +1,4 @@
-This is the readme file for Blueprint server.
+This is the readme file for Blueprint server. Blueprint is a real estate service provider company.
 
 Problem
 
