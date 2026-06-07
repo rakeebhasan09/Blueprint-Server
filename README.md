@@ -21,3 +21,12 @@ dns.setServers(["1.1.1.1", "8.8.8.8"]);
 //
 
 Eid Day != Code day
+
+Tech Stack's
+
+1. Node.js
+2. Express.js
+3. bycript js
+4. jsonwebtoken
+5. mongoose
+6. mvc pattern
