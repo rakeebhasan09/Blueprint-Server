@@ -30,3 +30,5 @@ Tech Stack's
 4. jsonwebtoken
 5. mongoose
 6. mvc pattern
+
+Electricity issue.
