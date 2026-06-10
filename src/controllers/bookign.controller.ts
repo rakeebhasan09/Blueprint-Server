@@ -36,7 +36,10 @@ const createBooking = async (req: Request, res: Response) => {
 // Get all bookings
 const getAllBookings = async (req: Request, res: Response) => {
     try {
-        const bookings = await Booking.find().sort({ createdAt: -1 });
+        const { customerEmail } = req.query;
+        const bookings = await Booking.find(
+            customerEmail ? { customerEmail } : {},
+        ).sort({ createdAt: -1 });
         res.status(200).json({
             success: true,
             message: "Bookings retrieved successfully",
