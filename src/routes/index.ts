@@ -4,6 +4,7 @@ import { FeaturedRoute } from "./featured.route";
 import { PopularProperty } from "./popular.route";
 import { UserRoutes } from "./user.route";
 import { BookingRoutes } from "./bookings.route";
+import { ContactRoutes } from "./contact.route";
 
 const router = express.Router();
 
@@ -39,6 +40,10 @@ const moduleRoutes = [
     {
         path: "/bookings",
         route: BookingRoutes,
+    },
+    {
+        path: "/contacts",
+        route: ContactRoutes,
     },
 ];
 
