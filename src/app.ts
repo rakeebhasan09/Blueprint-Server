@@ -6,12 +6,18 @@ import dns from "dns";
 dns.setServers(["1.1.1.1", "8.8.8.8"]);
 
 const app: Application = express();
+const allowedOrigins = (
+    process.env.CLIENT_URL || "http://localhost:3000"
+)
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean);
 
 // Parsers
 app.use(express.json());
 app.use(
     cors({
-        origin: "http://localhost:3000",
+        origin: allowedOrigins,
         credentials: true,
     }),
 );

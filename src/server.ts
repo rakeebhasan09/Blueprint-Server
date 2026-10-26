@@ -1,16 +1,10 @@
-import mongoose from "mongoose";
 import app from "./app";
 import config from "./config";
+import connectToDatabase from "./config/database";
 
 async function main() {
 	try {
-		if (!config.database_url) {
-			throw new Error(
-				"Database URL is not provided in environment variables",
-			);
-		}
-
-		await mongoose.connect(config.database_url);
+		await connectToDatabase();
 		console.log("Connected to MongoDB successfully");
 
 		app.listen(config.port, () => {
