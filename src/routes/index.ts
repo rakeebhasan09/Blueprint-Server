@@ -3,6 +3,8 @@ import { PropertyRoutes } from "./property.routes";
 import { FeaturedRoute } from "./featured.route";
 import { PopularProperty } from "./popular.route";
 import { UserRoutes } from "./user.route";
+import { BookingRoutes } from "./bookings.route";
+import { ContactRoutes } from "./contact.route";
 
 const router = express.Router();
 
@@ -20,8 +22,28 @@ const moduleRoutes = [
         route: PopularProperty,
     },
     {
-        path: "/register",
+        path: "/auth",
         route: UserRoutes,
+    },
+    {
+        path: "/auth",
+        route: UserRoutes,
+    },
+    {
+        path: "/users",
+        route: UserRoutes,
+    },
+    {
+        path: "/users/:id",
+        route: UserRoutes,
+    },
+    {
+        path: "/bookings",
+        route: BookingRoutes,
+    },
+    {
+        path: "/contacts",
+        route: ContactRoutes,
     },
 ];
 

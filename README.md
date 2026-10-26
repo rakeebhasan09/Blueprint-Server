@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Blueprint Server
+=======
+This is the readme file for Blueprint server. Blueprint is a real estate service provider company.
+>>>>>>> c35635c2d049e81537f7063e5b7114fcfaaba5d1
 
 ## Deploying to Vercel
 
@@ -29,3 +33,21 @@ To compile and run the production server locally:
 npm run build
 npm start
 ```
+<<<<<<< HEAD
+=======
+
+//
+
+Eid Day != Code day
+
+Tech Stack's
+
+1. Node.js
+2. Express.js
+3. bycript js
+4. jsonwebtoken
+5. mongoose
+6. mvc pattern
+
+Electricity issue.
+>>>>>>> c35635c2d049e81537f7063e5b7114fcfaaba5d1
